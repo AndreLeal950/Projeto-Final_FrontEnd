@@ -1,5 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
+import {
+
+  Container,
+  Input,
+  FormControl,
+  FormLabel,
+  FormHelperText, 
+  Button
+} from "@chakra-ui/react"
 
 function Login() {
   const navigate = useNavigate();
@@ -20,19 +29,59 @@ function Login() {
   }
 
   return (
-    <div>
-      <p>Você precisa estar logado para ver a página {from}</p>
-
-      <form onSubmit={handleSubmit}>
-        <label>
-          email: <input name="email" type="text" />
-        </label>{" "}
-        <label>
-          senha: <input name="password" type="password" />
-        </label>{" "}
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <Container
+      width={"360px"}
+      margin={"0px"}
+      padding={"0"}
+      display={"flex"}
+      flexDirection={"column"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      textAlign>
+      <FormControl onSubmit={handleSubmit}
+        display={"flex"}
+        flexDirection={"column"}
+        >
+        <FormLabel
+          htmlFor='email'
+          padding={"0px"}
+          margin={"0px"}
+          display={"flex"}
+          alignItems={"center"}>Email</FormLabel>
+        <Input id='email' type='email'
+          width={"296px"}
+          height={"40px"}
+          marginTop={"0px"}
+          marginBottom={"0px"}
+          borderRadius={"4px"}
+          border={"2px"}/>
+        <FormHelperText>Não compartilharemos seu e-mail.</FormHelperText>
+        <FormLabel
+          htmlFor='password'
+          padding={"0px"}
+          marginTop={"40px"}
+          >Senha</FormLabel>
+        
+        <Input id='password' type='password'
+          width={"296px"}
+          height={"40px"}
+          marginBottom={"40px"}
+          borderRadius={"4px"}
+          border={"2px"}
+          />
+    
+              <Button
+              type="submit"
+              colorScheme='twitter'
+              width={"296px"}
+              height={"40px"}
+              marginTop={"40px"}
+              paddin={"40px"}>
+                  Login
+            </Button>
+         </FormControl>
+       
+    </Container>
   );
 }
 

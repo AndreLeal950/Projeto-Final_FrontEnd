@@ -1,23 +1,21 @@
 import { Link, Outlet } from "react-router-dom";
-
+import { Container } from '@chakra-ui/react'
 import AuthStatus from "./AuthStatus";
 
 function Layout() {
   return (
-    <div>
+    <Container
+      display={"flex"}
+      flexDirection={"column"}
+      justifyContent={"center"}
+    alignItems={"center"}>
       <AuthStatus />
-
-      <ul>
-        <li>
-          <Link to="/">Public Page</Link>
-        </li>
-        <li>
+            
+          <Link to="/">Home</Link><br></br>
           <Link to="/protected">Protected Page</Link>
-        </li>
-      </ul>
-
+       
       <Outlet />
-    </div>
+    </Container>
   );
 }
 

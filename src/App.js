@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { AuthProvider, RequireAuth } from "./context/auth-context";
 import Login from "./routes/Login";
 import Layout from "./components/Layout";
-import PublicPage from "./routes/PublicPage";
+import Home from "./routes/Home";
 import ProtectedPage from "./routes/ProtectedPage";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <AuthProvider>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<PublicPage />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route
             path="/protected"
