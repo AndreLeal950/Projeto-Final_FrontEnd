@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { Container, Text, Box, Image } from "@chakra-ui/react"
+import { Container, Text, Box, Image, Flex } from "@chakra-ui/react"
 import { useAuth } from "../context/auth-context";
-import image from '../image/golden-de-oculos.png'
-
+import GoldenMobille from '../image/Golden-Mobille.png';
+import GoldenDesktop from '../image/Golden-Desktop.png';
+import Symbol from '../image/symbol.png'
+ 
 
 function AuthStatus() {
   let auth = useAuth();
@@ -10,41 +12,40 @@ function AuthStatus() {
 
   if (!auth.user) {
     return (
-      <Container
-        display={"flex"}
-        justifyContent={"center"}
-        backgroundSize={"cover"}
-        margin={"0"}
-        top={"0"}
-        left={"0"}
-         padding={"0"}
-      >
-               
-        <Box
-          backgroundImage={image}
-          backgroundSize={"cover"}
-          width={"360px"}
+         
+      <Flex       
+          direction={['column', 'row']}
+          bgImage={[GoldenMobille , GoldenDesktop]}
+          bgRepeat='no-repeat'
+          bgSize={'100%'}
           height={"262px"}
-          padding={"50px"}
+          margin={'-15px'}
+          padding={"150px"}
           display={"-ms-flexbox"}
           justifyContent={"flex-end"}
           alignItems={"flex-end"} >
-            
-          <Text
-            fontSize="34"
+           
+           <Flex
+            display={'flex'}
+            flexDirection='row'
+            fontSize="30"
             color='white'
-            fontWeight='700'
-            fontStyle='bold'
+            fontWeight='600'
             fontFamily='Sans-Serif'
             textAlign="center"
-            marginTop={"20"} >
-              Comece agora.<br></br>
+            justifyContent={'center'}
+            w='100%'
+            >
+          <Text width={"200px"}>
+            <Image src={Symbol} w={53} margin='-50px' marginLeft={-10}/>
+              Comece agora.
               Conecte-se já.
           </Text>
+          </Flex>
            
-          </Box> 
-          
-      </Container>
+         
+          </Flex>
+      
     );
   }
 
