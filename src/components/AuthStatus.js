@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Container, Text, Box, Image, Flex } from "@chakra-ui/react"
+import {  Text, Image, Flex } from "@chakra-ui/react"
 import { useAuth } from "../context/auth-context";
 import GoldenMobille from '../image/Golden-Mobille.png';
 import GoldenDesktop from '../image/Golden-Desktop.png';
