@@ -3,7 +3,9 @@ import { getFromStorage } from "../services/auth";
 
 const apiURL = process.env.REACT_APP_API_URL;
 
-const instance = axios.create({ baseURL: apiURL });
+const instance = axios.create({
+   baseURL: "http://localhost:5000"
+  });
 
 instance.interceptors.request.use((config) => {
   const user = getFromStorage("user");
