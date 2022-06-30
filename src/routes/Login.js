@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
-import React, { useState} from "react";
+import React from "react";
 import {
   Input, 
   InputGroup, 
@@ -14,47 +14,43 @@ import {
   FormLabel} from "@chakra-ui/react";
 import { ViewIcon , ViewOffIcon } from '@chakra-ui/icons'
 import logo from "../images/logo.png"
-import doglogindesk from "../images/doglogindesk.png"
-import dogloginmob from "../images/dogloginmob.png"
+import doglogin from "../images/doglogin.png"
 import symbolwhite from "../images/symbolwhite.png"
 import footer from "../images/footer.png"
+import dogLoginMobile from "../images/dogLoginMobile.png"
 import symbol from "../images/symbol.png"
 import { Link as ReachLink } from "react-router-dom"
+import { useForm } from "react-hook-form";
 
 
 function Login() {
+  const { register } = useForm();
   const navigate = useNavigate();
   const location = useLocation();
   const { signin } = useAuth();
   const from = location.state?.from?.pathname || "/";
-  const [show, setShow] = useState(false)
-  const [user, setUser] = useState();
+  const [show, setShow] = React.useState(false)
   const handleClick = () => setShow(!show)
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const email = formData.get("email");
     const password = formData.get("password");
-
     await signin({ email, password });
     navigate(from, { replace: true });
-    setUser(null);
-
   }
  
-
-
   return (
       <Flex direction={['column', 'row']}  mw={["480px", "1280px"]} 
       mh={["800px", "720px"]}>
     
-        <Flex bgImage={[doglogindesk, dogloginmob]} bgRepeat={"no-repeat"} bgPosition={"center"} bgSize={"cover"}
+        <Flex bgImage={[doglogin, dogLoginMobile]} bgRepeat={"no-repeat"} bgPosition={"center"} bgSize={"cover"}
          alt='' w={["", "768px"]} h={["262px", "720px"]} >
 
             <Flex display={['flex', 'none']} direction={"column"} m={"auto"} gap={"39px"}>
             <Image boxSize={"50px"} src={symbolwhite}  />
                <Text w={"100%"} color={"white"}
-               fontSize={"40px"} fontWeight={"600"} lineHeight={"50px"} marginRight={'80px'}>
+               fontSize={"36px"} fontWeight={"700"} lineHeight={"49px"} >
                Comece agora.<br/>
                Conecte-se já.
               </Text> 
@@ -84,7 +80,7 @@ function Login() {
       <form onSubmit={handleSubmit} > 
       <Flex direction={"column"} >
      <FormLabel> Email:
-      <Input  w={"100%"} pr='4.5rem' placeholder='E-mail'  name="email"  />
+      <Input  w={"100%"} pr='4.5rem' placeholder='E-mail'  name="email" {...register("email")}  />
       </FormLabel> 
       <FormLabel pt={"2px"}> Senha:
       <InputGroup size='md'>
@@ -94,11 +90,12 @@ function Login() {
         placeholder='Senha'
         name="password"
         w={"100%"}
+        {...register("password")}
       />
       <InputRightElement width='4.5rem'>
-        <Button h='1.75rem' size='sm' onClick={handleClick}>
+        <Button h='1.75rem' size='sm' onClick={handleClick} bg={'none'}>
           {show ? <ViewOffIcon boxSize={6}/> : <ViewIcon  boxSize={6}/>}
-        </Button> 
+        </Button>
       </InputRightElement>
     </InputGroup>
     </FormLabel>
@@ -108,11 +105,11 @@ function Login() {
       </form>
   
 
-      <Text mb={"30px"} mt={"20px"} fontSize={'18px'}>
+      <Text mb={"30px"} mt={"24px"} >
           Ainda não possui uma conta?{' '} <br/>
           <Text  as='u'>
-          <Link  as={ReachLink} to='/signup' color='teal.500' href='#' fontSize={'20px'}>
-            Cadastrar-se
+          <Link  as={ReachLink} to='/signup' color='teal.500' href='#'>
+            Cadastre-se
         </Link>  
         </Text>
    </Text>

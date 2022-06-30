@@ -1,0 +1,17 @@
+#nav{
+    display: flex;
+    flex-direction: row;
+   
+}
+
+#menu{
+    padding: 15px;   
+    
+}
+#logo{
+    display: flex;
+    align-items: center;
+    margin-left: 25%;
+   
+    
+}
